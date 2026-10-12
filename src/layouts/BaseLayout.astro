@@ -10,7 +10,7 @@ interface Props {
 
 const {
   title,
-  description = 'Portafolio profesional de Alejandro Tapia, analista e ingeniero de datos',
+  description = 'Portafolio profesional de Alejandro Tapia, analista e ingeniero de datos: análisis de vulnerabilidad territorial en Colchagua.',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -26,11 +26,24 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.svg" />
+        <meta name="color-scheme" content="light dark" />
+    <script is:inline>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="flex min-h-screen flex-col bg-white text-slate-900">
+  
+  <body class="flex min-h-screen flex-col">
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:rounded focus:bg-white focus:px-3 focus:py-2"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-bg focus:px-3 focus:py-2 focus:text-fg"
     >
       Saltar al contenido
     </a>

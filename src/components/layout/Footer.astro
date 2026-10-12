@@ -1,8 +1,9 @@
 ---
+import Container from '../ui/Container.astro';
 const year = new Date().getFullYear();
 ---
-<footer class="border-t border-slate-200 bg-slate-50">
-  <div class="mx-auto max-w-5xl px-4 py-6 text-sm text-slate-600">
-    © {year} Alejandro Tapia · Ingeniería en Programación, AIEP
-  </div>
+<footer class="border-t border-line bg-surface">
+  <Container class="py-6 text-sm text-muted">
+    © {year} Alejandro Tapia
+  </Container>
 </footer>
