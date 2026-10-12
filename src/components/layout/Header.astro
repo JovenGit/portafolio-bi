@@ -1,0 +1,56 @@
+---
+import { navigation } from '../../data/navigation';
+import Container from '../ui/Container.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<header class="sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur">
+  <Container class="flex flex-wrap items-center justify-between gap-y-2 py-3">
+    <a href="/" class="text-lg font-semibold">Alejandro Tapia</a>
+
+    <div class="flex items-center gap-2 md:order-last">
+      <ThemeToggle />
+      <button
+        id="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Abrir menú"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line hover:bg-surface md:hidden"
+      >
+        <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+      </button>
+    </div>
+
+    <nav id="site-nav" aria-label="Principal" class="hidden w-full md:block md:w-auto">
+      <ul class="flex flex-col gap-1 py-2 text-sm md:flex-row md:items-center md:gap-6 md:py-0">
+        {navigation.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={current === item.href ? 'page' : undefined}
+              class="block rounded py-2 text-muted hover:text-fg aria-[current=page]:font-semibold aria-[current=page]:text-accent md:py-0"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </Container>
+</header>
+
+<script>
+  const button = document.getElementById('menu-button');
+  const nav = document.getElementById('site-nav');
+
+  button?.addEventListener('click', () => {
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!isOpen));
+    button.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+    nav?.classList.toggle('hidden', isOpen);
+  });
+</script>
