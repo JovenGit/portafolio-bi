@@ -1,0 +1,11 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<div class="rounded-xl border border-dashed border-line bg-surface p-8 text-center" role="status">
+  <p class="font-semibold">En construcción</p>
+  <p class="mx-auto mt-1 max-w-md text-sm text-muted">{text}</p>
+</div>
