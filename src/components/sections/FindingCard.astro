@@ -1,0 +1,40 @@
+---
+import Card from '../ui/Card.astro';
+import Badge from '../ui/Badge.astro';
+import { kindLabels, relationLabels, type Finding } from '../../data/findings';
+
+interface Props {
+  finding: Finding;
+}
+const { finding } = Astro.props;
+---
+<Card as="article" class={`flex flex-col gap-4 ${finding.pending ? 'border-dashed' : ''}`}>
+  <div class="flex flex-wrap gap-2">
+    <Badge label={kindLabels[finding.kind]} />
+    {finding.pending && <Badge label="Por completar" />}
+  </div>
+
+  <div>
+    <h3 class="text-lg font-semibold leading-snug">{finding.title}</h3>
+    <p class="mt-2 text-muted">{finding.summary}</p>
+  </div>
+
+  <dl class="space-y-2 border-y border-line py-4 text-sm">
+    {finding.evidence.map((e) => (
+      <div>
+        <dt class="text-muted">{e.label}</dt>
+        <dd class="font-semibold">{e.value}</dd>
+        <dd class="text-xs text-muted">Fuente: {e.source}</dd>
+      </div>
+    ))}
+  </dl>
+
+  <div class="space-y-1 text-sm">
+    <p><span class="font-semibold">Tipo de evidencia:</span> <span class="text-muted">{relationLabels[finding.relation]}</span></p>
+    <p><span class="font-semibold">Limitación:</span> <span class="text-muted">{finding.caveat}</span></p>
+  </div>
+
+  <p class="mt-auto rounded-lg bg-bg p-3 text-sm">
+    <span class="font-semibold text-accent">Recomendación:</span> {finding.recommendation}
+  </p>
+</Card>

@@ -1,0 +1,16 @@
+---
+import Card from '../ui/Card.astro';
+
+interface Props {
+  label: string;
+  value: string;
+  note?: string;
+  pending?: boolean;
+}
+const { label, value, note, pending = false } = Astro.props;
+---
+<Card class={pending ? 'border-dashed' : ''}>
+  <p class="text-sm font-medium text-muted">{label}</p>
+  <p class="mt-2 text-4xl font-bold tracking-tight text-accent">{value}</p>
+  {note && <p class="mt-1 text-xs text-muted">{note}</p>}
+</Card>

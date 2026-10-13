@@ -80,9 +80,9 @@ pull request, revisión del preview y merge. Commits siguiendo Conventional Comm
 
 ## Declaración de uso de IA
 
-[Ajusta este texto a lo que realmente hiciste.] Usé un asistente de IA (Claude, de
-Anthropic) como apoyo para [planificar la arquitectura, generar borradores de código y
-resolver errores de configuración]. Revisé, probé, tuve errores y adapté el resultado, y puedo
+Usé un asistente de IA (Claude, de Anthropic) como apoyo para [planificar
+la arquitectura, generar borradores de código y resolver errores de configuración].
+Revisé, probé, tuve errores y adapté el resultado, y puedo
 explicar el código y las decisiones técnicas del proyecto.
 
 ## Autor

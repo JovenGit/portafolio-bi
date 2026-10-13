@@ -1,0 +1,122 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/ui/Container.astro';
+import Card from '@/components/ui/Card.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Button from '@/components/ui/Button.astro';
+import Breadcrumbs from '@/components/ui/Breadcrumbs.astro';
+import ComingSoon from '@/components/ui/ComingSoon.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import PowerBIEmbed from '@/components/powerbi/PowerBIEmbed.astro';
+import NotebookCard from '@/components/sections/NotebookCard.astro';
+import FindingsSection from '@/components/sections/FindingsSection.astro';
+import { caseInfo, sections, story } from '@/data/colchagua';
+import { powerbi } from '@/data/powerbi';
+import { notebooks, notebooksIntro, notebooksRepoUrl } from '@/data/notebooks';
+
+const isReady = (id: string) => sections.find((s) => s.id === id)?.ready ?? false;
+
+const pageIndex = [
+  { label: 'El caso', href: '#historia' },
+  ...sections.filter((s) => s.ready).map((s) => ({ label: s.title, href: s.href })),
+];
+---
+
+<BaseLayout title="Colchagua" description={caseInfo.subtitle}>
+  <Container class="py-12 md:py-16">
+    <Breadcrumbs items={[{ label: 'Proyectos', href: '/proyecto' }, { label: 'Colchagua' }]} />
+    <SectionHeading level="h1" title={caseInfo.title} subtitle={caseInfo.subtitle} />
+
+    <ul class="mb-8 flex flex-wrap gap-2" aria-label="Tecnologías">
+      {caseInfo.tags.map((tag) => <li><Badge label={tag} /></li>)}
+    </ul>
+
+    {
+      pageIndex.length > 1 && (
+        <nav aria-label="En esta página" class="mb-12 border-b border-line">
+          <ul class="flex flex-wrap gap-x-6 text-sm">
+            {pageIndex.map((item) => (
+              <li>
+                <a href={item.href} class="block py-3 text-muted hover:text-fg">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    <section id="historia" aria-labelledby="historia-titulo" class="scroll-mt-24">
+      <h2 id="historia-titulo" class="text-2xl font-bold tracking-tight md:text-3xl">
+        El caso en cinco pasos
+      </h2>
+      <ol class="mt-8 grid gap-4 md:grid-cols-2">
+        {
+          story.map((step, i) => (
+            <Card as="li" class={`flex gap-4 ${step.pending ? 'border-dashed' : ''}`}>
+              <span
+                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-on-accent"
+                aria-hidden="true"
+              >
+                {i + 1}
+              </span>
+              <div>
+                <h3 class="font-semibold">{step.title}</h3>
+                <p class="mt-1 text-sm text-muted">{step.text}</p>
+                {step.pending && <p class="mt-2 text-xs font-medium text-accent">En construcción</p>}
+              </div>
+            </Card>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section id="dashboard" aria-labelledby="dashboard-titulo" class="mt-16 scroll-mt-24">
+      <h2 id="dashboard-titulo" class="text-2xl font-bold tracking-tight md:text-3xl">Dashboard</h2>
+      <p class="mb-6 mt-2 max-w-2xl text-muted">{powerbi.description}</p>
+      {
+        isReady('dashboard') ? (
+          <PowerBIEmbed src={powerbi.embedUrl || undefined} title={powerbi.title} />
+        ) : (
+          <ComingSoon text="El informe de Power BI se publicará aquí cuando esté disponible." />
+        )
+      }
+    </section>
+
+    <section id="hallazgos" aria-labelledby="hallazgos-titulo" class="mt-16 scroll-mt-24">
+      <h2 id="hallazgos-titulo" class="text-2xl font-bold tracking-tight md:text-3xl">Hallazgos</h2>
+      <p class="mb-8 mt-2 max-w-2xl text-muted">
+        Qué encontró el análisis, con qué evidencia y hasta dónde se puede confiar en ello.
+      </p>
+      {
+        isReady('hallazgos') ? (
+          <FindingsSection />
+        ) : (
+          <ComingSoon text="Las conclusiones del análisis se publicarán aquí." />
+        )
+      }
+    </section>
+
+    <section id="notebooks" aria-labelledby="notebooks-titulo" class="mt-16 scroll-mt-24">
+      <h2 id="notebooks-titulo" class="text-2xl font-bold tracking-tight md:text-3xl">Notebooks</h2>
+      <p class="mb-8 mt-2 max-w-2xl text-muted">{notebooksIntro}</p>
+      {
+        isReady('notebooks') ? (
+          <>
+            <ul class="grid gap-6 md:grid-cols-2">
+              {notebooks.map((n) => <NotebookCard notebook={n} />)}
+            </ul>
+            {notebooksRepoUrl && (
+              <div class="mt-8">
+                <Button href={notebooksRepoUrl}>Ver el repositorio en GitHub</Button>
+              </div>
+            )}
+          </>
+        ) : (
+          <ComingSoon text="Los notebooks se enlazarán aquí desde GitHub." />
+        )
+      }
+    </section>
+  </Container>
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+import type { RankingItem } from '../../data/findings';
+
+interface Props {
+  items: RankingItem[];
+  max?: number;
+}
+const { items, max = 100 } = Astro.props;
+---
+<ol class="space-y-4">
+  {items.map((item) => {
+    const width = item.value === null ? 0 : Math.min(100, (item.value / max) * 100);
+    return (
+      <li>
+        <div class="flex items-baseline justify-between gap-4 text-sm">
+          <span class="font-medium">{item.name}</span>
+          <span class="tabular-nums text-muted">
+            {item.value === null ? 'Sin datos aún' : `${item.value}${item.unit ?? ''}`}
+          </span>
+        </div>
+        <div class="mt-1.5 h-2.5 w-full overflow-hidden rounded-full bg-line" aria-hidden="true">
+          <div class="h-full rounded-full bg-accent" style={`width: ${width}%`}></div>
+        </div>
+      </li>
+    );
+  })}
+</ol>
