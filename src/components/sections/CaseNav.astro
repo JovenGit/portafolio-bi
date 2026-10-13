@@ -1,0 +1,30 @@
+---
+import { sections } from '@/data/colchagua';
+
+const base = '/proyecto/colchagua';
+const items = [
+  { label: 'Resumen', href: base },
+  ...sections.filter((s) => s.ready).map((s) => ({ label: s.title, href: s.href })),
+];
+const current = Astro.url.pathname.replace(/\/$/, '');
+---
+
+{
+  items.length > 1 && (
+    <nav aria-label="Secciones del proyecto Colchagua" class="mb-10 border-b border-line">
+      <ul class="-mb-px flex flex-wrap gap-x-6 text-sm">
+        {items.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={current === item.href ? 'page' : undefined}
+              class="block border-b-2 border-transparent py-3 text-muted hover:text-fg aria-[current=page]:border-accent aria-[current=page]:font-semibold aria-[current=page]:text-fg"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

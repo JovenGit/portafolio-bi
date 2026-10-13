@@ -1,0 +1,51 @@
+---
+import Card from '@/components/ui/Card.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Button from '@/components/ui/Button.astro';
+import type { Project } from '@/data/projects';
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+
+<Card as="li" class="flex flex-col gap-4">
+  <div class="flex flex-wrap gap-2">
+    {project.featured && <Badge label="Proyecto destacado" />}
+    {project.status === 'en-progreso' && <Badge label="En construcción" />}
+  </div>
+
+  <div>
+    <h2 class="text-xl font-semibold leading-snug">{project.title}</h2>
+    <p class="mt-2 text-muted">{project.summary}</p>
+  </div>
+
+  <ul class="flex flex-wrap gap-2" aria-label="Tecnologías">
+    {project.tags.map((tag) => <li><Badge label={tag} /></li>)}
+  </ul>
+
+  <div class="mt-auto flex flex-wrap gap-3">
+    {
+      project.href && (
+        <Button href={project.href}>
+          Ver proyecto<span class="sr-only">: {project.title}</span>
+        </Button>
+      )
+    }
+    {
+      project.repoUrl && (
+        <Button href={project.repoUrl} variant="secondary">
+          Código<span class="sr-only"> de {project.title}</span>
+        </Button>
+      )
+    }
+    {
+      project.demoUrl && (
+        <Button href={project.demoUrl} variant="secondary">
+          Sitio en vivo<span class="sr-only"> de {project.title}</span>
+        </Button>
+      )
+    }
+  </div>
+</Card>
