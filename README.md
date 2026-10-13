@@ -76,7 +76,7 @@ pull request, revisión del preview y merge. Commits siguiendo Conventional Comm
 
 - Navegación por teclado, enlace de salto, foco visible y estructura semántica.
 - Contraste revisado en modo claro y oscuro; respeta `prefers-reduced-motion`.
-- Lighthouse (móvil, producción): Performance [**], Accessibility [**], Best Practices [**], SEO [**].
+- Lighthouse (móvil, producción): Performance [94], Accessibility [100], Best Practices [100], SEO [100].
 
 ## Declaración de uso de IA
 
