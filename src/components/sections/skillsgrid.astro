@@ -6,10 +6,15 @@ import { skills } from '../../data/skills';
 
 const categories = [...new Set(skills.map((s) => s.category))];
 ---
+
 <section aria-labelledby="competencias" class="border-t border-line bg-surface/50">
   <Container class="py-12 md:py-16">
-    <h2 id="competencias" class="text-2xl font-bold tracking-tight md:text-3xl">Competencias</h2>
-    <p class="mt-2 max-w-2xl text-muted">Las herramientas que uso para trabajar con datos y publicarlos.</p>
+    <h2 id="competencias" class="text-2xl font-bold tracking-tight md:text-3xl">
+      Competencias
+    </h2>
+    <p class="mt-2 max-w-2xl text-muted">
+      Las herramientas que uso para trabajar con datos y publicarlos.
+    </p>
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {categories.map((category) => (
         <Card as="div">
@@ -17,7 +22,11 @@ const categories = [...new Set(skills.map((s) => s.category))];
           <ul class="mt-4 flex flex-wrap gap-2">
             {skills
               .filter((s) => s.category === category)
-              .map((s) => <li><Badge label={s.name} /></li>)}
+              .map((s) => (
+                <li>
+                  <Badge label={s.name} />
+                </li>
+              ))}
           </ul>
         </Card>
       ))}

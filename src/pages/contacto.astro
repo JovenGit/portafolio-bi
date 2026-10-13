@@ -7,6 +7,7 @@ import SectionHeading from '../components/ui/SectionHeading.astro';
 import ContactForm from '../components/sections/contactform.astro';
 import { profile } from '../data/profile';
 ---
+
 <BaseLayout
   title="Contacto"
   description="Escríbeme para conversar sobre análisis de datos, Business Intelligence o una oportunidad de trabajo."
@@ -26,8 +27,12 @@ import { profile } from '../data/profile';
       <Card as="div" class="h-fit">
         <h2 class="text-lg font-semibold">También puedes encontrarme en</h2>
         <div class="mt-4 flex flex-col gap-3">
-          <Button href={profile.links.github} variant="secondary">GitHub</Button>
-          <Button href={`mailto:${profile.links.email}`} variant="secondary">Correo directo</Button>
+          <Button href={profile.links.github} variant="secondary">
+            GitHub
+          </Button>
+          <Button href={`mailto:${profile.links.email}`} variant="secondary">
+            Correo directo
+          </Button>
         </div>
       </Card>
     </div>
