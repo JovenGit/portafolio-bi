@@ -1,4 +1,4 @@
-export type SkillCategory = 'Lenguajes' | 'Datos' | 'Visualización' | 'Web y despliegue';
+export type SkillCategory = 'Lenguajes' | 'Datos.' | 'Visualización' | 'Web y despliegue';
 export type Skill = { name: string; category: SkillCategory };
 
 export const skills: Skill[] = [
