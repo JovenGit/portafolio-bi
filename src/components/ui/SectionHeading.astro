@@ -7,8 +7,14 @@ interface Props {
 const { title, subtitle, level = 'h2' } = Astro.props;
 const Tag = level;
 ---
+
 <div class="mb-8">
-  <Tag class:list={['font-bold tracking-tight', level === 'h1' ? 'text-3xl md:text-4xl' : 'text-2xl md:text-3xl']}>
+  <Tag
+    class:list={[
+      'font-bold tracking-tight',
+      level === 'h1' ? 'text-3xl md:text-4xl' : 'text-2xl md:text-3xl',
+    ]}
+  >
     {title}
   </Tag>
   {subtitle && <p class="mt-2 max-w-2xl text-muted">{subtitle}</p>}

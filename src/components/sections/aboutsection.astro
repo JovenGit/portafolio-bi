@@ -1,13 +1,17 @@
 ---
 import Container from '../ui/Container.astro';
-import SectionHeading from '../ui/SectionHeading.astro';
 import { profile } from '../../data/profile';
 ---
+
 <section aria-labelledby="sobre-mi">
   <Container class="py-12 md:py-16">
-    <h2 id="sobre-mi" class="mb-6 text-2xl font-bold tracking-tight md:text-3xl">Sobre mí</h2>
+    <h2 id="sobre-mi" class="mb-6 text-2xl font-bold tracking-tight md:text-3xl">
+      Sobre mí
+    </h2>
     <div class="max-w-2xl space-y-4 text-muted">
-      {profile.about.map((p) => <p>{p}</p>)}
+      {profile.about.map((p) => (
+        <p>{p}</p>
+      ))}
     </div>
   </Container>
 </section>

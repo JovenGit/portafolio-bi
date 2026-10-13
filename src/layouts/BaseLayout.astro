@@ -14,6 +14,7 @@ const {
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
+
 <!doctype html>
 <html lang="es">
   <head>
@@ -26,20 +27,22 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.svg" />
-        <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light dark" />
     <script is:inline>
       (function () {
         try {
-          var saved = localStorage.getItem('theme');
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const saved = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
           if (saved === 'dark' || (!saved && prefersDark)) {
             document.documentElement.classList.add('dark');
           }
-        } catch (e) {}
+        } catch {
+          // Sin acceso al almacenamiento: se usa el tema por defecto
+        }
       })();
     </script>
   </head>
-  
+
   <body class="flex min-h-screen flex-col">
     <a
       href="#main"

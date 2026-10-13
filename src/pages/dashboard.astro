@@ -6,13 +6,18 @@ import SectionHeading from '../components/ui/SectionHeading.astro';
 import PowerBIEmbed from '../components/powerbi/PowerBIEmbed.astro';
 import { powerbi } from '../data/powerbi';
 ---
+
 <BaseLayout title="Dashboard" description={powerbi.description}>
   <Container class="py-12 md:py-16">
     <SectionHeading level="h1" title="Dashboard" subtitle={powerbi.description} />
     <PowerBIEmbed src={powerbi.embedUrl || undefined} title={powerbi.title} />
     <div class="mt-10 flex flex-wrap gap-3">
-      <Button href="/notebooks" variant="secondary">Ver los notebooks</Button>
-      <Button href="/contacto" variant="secondary">Contacto</Button>
+      <Button href="/notebooks" variant="secondary">
+        Ver los notebooks
+      </Button>
+      <Button href="/contacto" variant="secondary">
+        Contacto
+      </Button>
     </div>
   </Container>
 </BaseLayout>
