@@ -6,17 +6,22 @@ import SectionHeading from '../components/ui/SectionHeading.astro';
 import NotebookCard from '../components/sections/NotebookCard.astro';
 import { notebooks, notebooksIntro, notebooksRepoUrl } from '../data/notebooks';
 ---
+
 <BaseLayout title="Notebooks" description={notebooksIntro}>
   <Container class="py-12 md:py-16">
     <SectionHeading level="h1" title="Notebooks" subtitle={notebooksIntro} />
 
     <ul class="grid gap-6 md:grid-cols-2">
-      {notebooks.map((n) => <NotebookCard notebook={n} />)}
+      {notebooks.map((n) => (
+        <NotebookCard notebook={n} />
+      ))}
     </ul>
 
     <div class="mt-10 flex flex-wrap gap-3">
       {notebooksRepoUrl && <Button href={notebooksRepoUrl}>Ver el repositorio en GitHub</Button>}
-      <Button href="/dashboard" variant="secondary">Ver el dashboard</Button>
+      <Button href="/dashboard" variant="secondary">
+        Ver el dashboard
+      </Button>
     </div>
   </Container>
 </BaseLayout>

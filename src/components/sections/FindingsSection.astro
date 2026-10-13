@@ -15,7 +15,9 @@ import { headline, kpis, ranking, findings, limitations } from '@/data/findings'
   <div>
     <h3 class="sr-only">Cifras clave</h3>
     <div class="grid gap-4 sm:grid-cols-3">
-      {kpis.map((k) => <KpiStat {...k} />)}
+      {kpis.map((k) => (
+        <KpiStat {...k} />
+      ))}
     </div>
   </div>
 
@@ -32,7 +34,9 @@ import { headline, kpis, ranking, findings, limitations } from '@/data/findings'
       Cada hallazgo indica su evidencia, su tipo, su limitación y qué hacer con él.
     </p>
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {findings.map((f) => <FindingCard finding={f} />)}
+      {findings.map((f) => (
+        <FindingCard finding={f} />
+      ))}
     </div>
   </div>
 
@@ -42,7 +46,9 @@ import { headline, kpis, ranking, findings, limitations } from '@/data/findings'
       Una asociación entre variables no prueba que una cause la otra.
     </p>
     <ul class="mt-4 list-disc space-y-2 pl-5 text-muted">
-      {limitations.map((l) => <li>{l}</li>)}
+      {limitations.map((l) => (
+        <li>{l}</li>
+      ))}
     </ul>
   </Card>
 </div>

@@ -5,9 +5,9 @@ export type Project = {
   tags: string[];
   featured?: boolean;
   status?: 'completo' | 'en-progreso';
-  href?: string; 
-  repoUrl?: string; 
-  demoUrl?: string; 
+  href?: string;
+  repoUrl?: string;
+  demoUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -18,7 +18,7 @@ export const projects: Project[] = [
       'Análisis de datos para identificar qué amenazas y qué comunas o PYMEs de Colchagua son más vulnerables. Incluye ETL, un dashboard en Power BI y las conclusiones del análisis.',
     tags: ['Python', 'SQL', 'ETL', 'Power BI'],
     featured: true,
-    status: 'en-progreso', 
+    status: 'en-progreso',
     href: '/proyecto/colchagua/presentacion',
   },
   {

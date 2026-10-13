@@ -10,6 +10,7 @@ interface Props {
 const { notebook } = Astro.props;
 const pending = !notebook.url;
 ---
+
 <Card as="li" class={`flex flex-col gap-4 ${pending ? 'border-dashed' : ''}`}>
   <div class="flex flex-wrap gap-2">
     <Badge label={notebook.stage} />
@@ -22,16 +23,18 @@ const pending = !notebook.url;
   </div>
 
   <ul class="flex flex-wrap gap-2" aria-label="Herramientas usadas">
-    {notebook.tools.map((tool) => <li><Badge label={tool} /></li>)}
+    {notebook.tools.map((tool) => (
+      <li>
+        <Badge label={tool} />
+      </li>
+    ))}
   </ul>
 
-  {
-    notebook.url && (
-      <div class="mt-auto">
-        <Button href={notebook.url} variant="secondary">
-          Ver en GitHub<span class="sr-only">: {notebook.title}</span>
-        </Button>
-      </div>
-    )
-  }
+  {notebook.url && (
+    <div class="mt-auto">
+      <Button href={notebook.url} variant="secondary">
+        Ver en GitHub<span class="sr-only">: {notebook.title}</span>
+      </Button>
+    </div>
+  )}
 </Card>

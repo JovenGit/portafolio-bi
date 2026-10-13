@@ -16,14 +16,14 @@
 
 ## Stack y por qué
 
-| Tecnología | Motivo |
-|---|---|
-| [Astro](https://astro.build) + TypeScript | Sitio de contenido rapido y con buena construccion. |
-| Tailwind CSS | Diseño consistente y responsivo, con tokens de diseño y modo oscuro. |
-| React (islas) | Solo para componentes interactivos que lo necesiten. |
-| Netlify | Despliegue continuo desde GitHub, previews por pull request y formularios. |
-| ESLint, Prettier, `astro check` | Calidad de código, formato y tipos. |
-| GitHub Actions | CI: valida cada push y pull request. |
+| Tecnología                                | Motivo                                                                     |
+| ----------------------------------------- | -------------------------------------------------------------------------- |
+| [Astro](https://astro.build) + TypeScript | Sitio de contenido rapido y con buena construccion.                        |
+| Tailwind CSS                              | Diseño consistente y responsivo, con tokens de diseño y modo oscuro.       |
+| React (islas)                             | Solo para componentes interactivos que lo necesiten.                       |
+| Netlify                                   | Despliegue continuo desde GitHub, previews por pull request y formularios. |
+| ESLint, Prettier, `astro check`           | Calidad de código, formato y tipos.                                        |
+| GitHub Actions                            | CI: valida cada push y pull request.                                       |
 
 ## Cómo correrlo
 
@@ -36,14 +36,14 @@ npm install
 npm run dev       # http://localhost:4321
 ```
 
-| Comando | Qué hace |
-|---|---|
-| `npm run dev` | Servidor de desarrollo |
-| `npm run build` | Genera el sitio estático en `dist/` |
-| `npm run preview` | Sirve el build localmente |
-| `npm run lint` | Revisa el código con ESLint |
-| `npm run format` | Da formato con Prettier |
-| `npm run check` | Valida tipos con `astro check` |
+| Comando           | Qué hace                            |
+| ----------------- | ----------------------------------- |
+| `npm run dev`     | Servidor de desarrollo              |
+| `npm run build`   | Genera el sitio estático en `dist/` |
+| `npm run preview` | Sirve el build localmente           |
+| `npm run lint`    | Revisa el código con ESLint         |
+| `npm run format`  | Da formato con Prettier             |
+| `npm run check`   | Valida tipos con `astro check`      |
 
 > En desarrollo el formulario de contacto simula el envío. Netlify Forms solo funciona en el sitio desplegado.
 
@@ -76,7 +76,7 @@ pull request, revisión del preview y merge. Commits siguiendo Conventional Comm
 
 - Navegación por teclado, enlace de salto, foco visible y estructura semántica.
 - Contraste revisado en modo claro y oscuro; respeta `prefers-reduced-motion`.
-- Lighthouse (móvil, producción): Performance [__], Accessibility [__], Best Practices [__], SEO [__].
+- Lighthouse (móvil, producción): Performance [**], Accessibility [**], Best Practices [**], SEO [**].
 
 ## Declaración de uso de IA
 
