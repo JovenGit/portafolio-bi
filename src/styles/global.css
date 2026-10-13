@@ -10,6 +10,9 @@
   --border: #e2e8f0;
   --accent: #1d4ed8;
   --accent-contrast: #ffffff;
+  --grid-dot: color-mix(in srgb, var(--text) 13%, transparent);
+  --glow-1: color-mix(in srgb, var(--accent) 18%, transparent);
+  --glow-2: color-mix(in srgb, #06b6d4 12%, transparent);
 }
 
 .dark {
