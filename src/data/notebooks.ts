@@ -5,7 +5,7 @@ export type Notebook = {
   description: string;
   tools: string[];
   // URL del notebook en GitHub, por ejemplo:
-  // https://github.com/JovenGit/REPO/blob/main/notebooks/01_etl.ipynb
+  // https://github.com/JovenGit/portafolio-bi/blob/main/notebooks/01_etl.ipynb
   // Si está vacía, la tarjeta muestra "Enlace por completar".
   url?: string;
 };
