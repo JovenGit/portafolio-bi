@@ -4,7 +4,6 @@
   aria-label="Cambiar entre tema claro y oscuro"
   class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line text-fg hover:bg-surface"
 >
-  <!-- Luna: visible en tema claro -->
   <svg
     class="h-5 w-5 dark:hidden"
     aria-hidden="true"
@@ -17,7 +16,6 @@
   >
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
   </svg>
-  <!-- Sol: visible en tema oscuro -->
   <svg
     class="hidden h-5 w-5 dark:block"
     aria-hidden="true"
@@ -39,7 +37,6 @@
     try {
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     } catch {
-      /* si el almacenamiento está bloqueado, el tema solo dura la sesión */
     }
   });
 </script>

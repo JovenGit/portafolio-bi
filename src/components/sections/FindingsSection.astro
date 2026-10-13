@@ -3,7 +3,7 @@ import Card from '@/components/ui/Card.astro';
 import KpiStat from '@/components/sections/KpiStat.astro';
 import RankingBars from '@/components/sections/RankingBars.astro';
 import FindingCard from '@/components/sections/FindingCard.astro';
-import { headline, kpis, ranking, findings, limitations } from '@/data/findings';
+import { headline, kpis, findings, limitations } from '@/data/findings';
 ---
 
 <div class="space-y-12">
@@ -19,14 +19,6 @@ import { headline, kpis, ranking, findings, limitations } from '@/data/findings'
         <KpiStat {...k} />
       ))}
     </div>
-  </div>
-
-  <div>
-    <h3 class="text-xl font-bold">{ranking.title}</h3>
-    <p class="mt-2 max-w-2xl text-muted">{ranking.description}</p>
-    <Card class={`mt-4 ${ranking.pending ? 'border-dashed' : ''}`}>
-      <RankingBars items={ranking.items} />
-    </Card>
   </div>
 
   <div>

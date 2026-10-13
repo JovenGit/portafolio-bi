@@ -11,13 +11,12 @@
       radial-gradient(48rem 24rem at 92% 0%, var(--glow-2), transparent 70%);
   }
 
-  /* Cuadrícula de puntos que se desvanece desde la parte superior */
   .site-bg::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background-size: 12px 12px;
     -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 0%, transparent 75%);
     mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 0%, transparent 75%);
   }

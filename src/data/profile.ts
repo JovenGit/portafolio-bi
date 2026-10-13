@@ -8,7 +8,7 @@ export type Profile = {
 };
 
 export const profile: Profile = {
-  name: 'Alejandro Tapia',
+  name: 'Alejandro Tapia · Jovendev',
   role: 'Analista de datos',
   field: 'Business Intelligence · Ingeniería en Programación',
   tagline:
