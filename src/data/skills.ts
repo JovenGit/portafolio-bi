@@ -1,9 +1,6 @@
 export type SkillCategory = 'Lenguajes' | 'Datos' | 'Visualización' | 'Web y despliegue';
 export type Skill = { name: string; category: SkillCategory };
 
-// Solo competencias que realmente dominas y puedes explicar en la defensa.
-// Si en el Trabajo Integrador usaste DAX, modelado (datamart) o ML/Forecast,
-// agrégalas aquí, una línea cada una.
 export const skills: Skill[] = [
   { name: 'Python', category: 'Lenguajes' },
   { name: 'SQL', category: 'Lenguajes' },

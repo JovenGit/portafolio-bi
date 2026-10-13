@@ -17,7 +17,6 @@ import { notebooks, notebooksIntro, notebooksRepoUrl } from '@/data/notebooks';
 const isReady = (id: string) => sections.find((s) => s.id === id)?.ready ?? false;
 
 const pageIndex = [
-  { label: 'El caso', href: '#historia' },
   ...sections.filter((s) => s.ready).map((s) => ({ label: s.title, href: s.href })),
 ];
 ---
