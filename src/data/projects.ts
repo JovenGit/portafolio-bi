@@ -19,7 +19,7 @@ export const projects: Project[] = [
     tags: ['Python', 'SQL', 'ETL', 'Power BI'],
     featured: true,
     status: 'en-progreso', 
-    href: '/proyectos/colchagua/presentacion',
+    href: '/proyecto/colchagua/presentacion',
   },
   {
     slug: 'portafolio',
