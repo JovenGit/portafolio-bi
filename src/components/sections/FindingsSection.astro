@@ -1,0 +1,48 @@
+---
+import Card from '@/components/ui/Card.astro';
+import KpiStat from '@/components/sections/KpiStat.astro';
+import RankingBars from '@/components/sections/RankingBars.astro';
+import FindingCard from '@/components/sections/FindingCard.astro';
+import { headline, kpis, ranking, findings, limitations } from '@/data/findings';
+---
+
+<div class="space-y-12">
+  <Card class={`border-l-4 border-l-accent ${headline.pending ? 'border-dashed' : ''}`}>
+    <p class="text-sm font-semibold uppercase tracking-wide text-accent">Conclusión principal</p>
+    <p class="mt-2 text-xl font-semibold leading-snug md:text-2xl">{headline.text}</p>
+  </Card>
+
+  <div>
+    <h3 class="sr-only">Cifras clave</h3>
+    <div class="grid gap-4 sm:grid-cols-3">
+      {kpis.map((k) => <KpiStat {...k} />)}
+    </div>
+  </div>
+
+  <div>
+    <h3 class="text-xl font-bold">{ranking.title}</h3>
+    <p class="mt-2 max-w-2xl text-muted">{ranking.description}</p>
+    <Card class={`mt-4 ${ranking.pending ? 'border-dashed' : ''}`}>
+      <RankingBars items={ranking.items} />
+    </Card>
+  </div>
+
+  <div>
+    <p class="mb-4 max-w-2xl text-muted">
+      Cada hallazgo indica su evidencia, su tipo, su limitación y qué hacer con él.
+    </p>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {findings.map((f) => <FindingCard finding={f} />)}
+    </div>
+  </div>
+
+  <Card>
+    <h3 class="text-xl font-bold">Qué no podemos afirmar</h3>
+    <p class="mt-1 text-sm text-muted">
+      Una asociación entre variables no prueba que una cause la otra.
+    </p>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-muted">
+      {limitations.map((l) => <li>{l}</li>)}
+    </ul>
+  </Card>
+</div>
