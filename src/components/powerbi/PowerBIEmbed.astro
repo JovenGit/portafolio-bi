@@ -1,0 +1,41 @@
+---
+interface Props {
+  src?: string;
+  title: string;
+}
+const { src, title } = Astro.props;
+---
+{
+  src ? (
+    <figure>
+      <div class="relative aspect-[4/5] w-full overflow-hidden rounded-xl border border-line bg-surface sm:aspect-[16/9]">
+        <!-- Texto de carga: queda detrás del iframe y se tapa solo cuando el informe se pinta -->
+        <p class="absolute inset-0 flex items-center justify-center text-sm text-muted" aria-hidden="true">
+          Cargando dashboard…
+        </p>
+        <iframe
+          title={title}
+          src={src}
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer"
+          class="absolute inset-0 h-full w-full border-0 bg-transparent"
+        ></iframe>
+      </div>
+      <figcaption class="mt-3 text-sm text-muted">
+        ¿No se ve o prefieres pantalla completa?{' '}
+        <a href={src} target="_blank" rel="noopener noreferrer" class="font-medium text-accent underline">
+          Abrir el dashboard en una pestaña nueva
+        </a>
+        .
+      </figcaption>
+    </figure>
+  ) : (
+    <div class="rounded-xl border border-dashed border-line bg-surface p-10 text-center" role="status">
+      <p class="text-lg font-semibold">Dashboard próximamente</p>
+      <p class="mx-auto mt-2 max-w-md text-sm text-muted">
+        El informe de Power BI se publicará en esta página en cuanto esté disponible.
+      </p>
+    </div>
+  )
+}
