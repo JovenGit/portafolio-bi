@@ -1,0 +1,30 @@
+<div class="site-bg" aria-hidden="true"></div>
+
+<style>
+  .site-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(60rem 28rem at 12% -8%, var(--glow-1), transparent 70%),
+      radial-gradient(48rem 24rem at 92% 0%, var(--glow-2), transparent 70%);
+  }
+
+  /* Cuadrícula de puntos que se desvanece desde la parte superior */
+  .site-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+    background-size: 24px 24px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 0%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 0%, transparent 75%);
+  }
+
+  @media print {
+    .site-bg {
+      display: none;
+    }
+  }
+</style>

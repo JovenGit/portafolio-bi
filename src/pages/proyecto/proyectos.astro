@@ -17,7 +17,9 @@ import { projects } from '@/data/projects';
       subtitle="Lo que he construido: análisis de datos, dashboards y desarrollo web."
     />
     <ul class="grid gap-6 md:grid-cols-2">
-      {projects.map((project) => <ProjectCard project={project} />)}
+      {projects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
     </ul>
   </Container>
 </BaseLayout>

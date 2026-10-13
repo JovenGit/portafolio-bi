@@ -7,6 +7,7 @@ interface Props {
 }
 const { items, max = 100 } = Astro.props;
 ---
+
 <ol class="space-y-4">
   {items.map((item) => {
     const width = item.value === null ? 0 : Math.min(100, (item.value / max) * 100);
