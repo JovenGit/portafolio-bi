@@ -10,6 +10,8 @@
     "build": "astro build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -29,6 +31,8 @@
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
     "typescript-eslint": "^8.71.2"
   }
 }
