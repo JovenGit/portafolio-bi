@@ -1,0 +1,37 @@
+---
+import Card from '../ui/Card.astro';
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+import type { Notebook } from '../../data/notebooks';
+
+interface Props {
+  notebook: Notebook;
+}
+const { notebook } = Astro.props;
+const pending = !notebook.url;
+---
+<Card as="li" class={`flex flex-col gap-4 ${pending ? 'border-dashed' : ''}`}>
+  <div class="flex flex-wrap gap-2">
+    <Badge label={notebook.stage} />
+    {pending && <Badge label="Enlace por completar" />}
+  </div>
+
+  <div>
+    <h2 class="text-lg font-semibold leading-snug">{notebook.title}</h2>
+    <p class="mt-2 text-muted">{notebook.description}</p>
+  </div>
+
+  <ul class="flex flex-wrap gap-2" aria-label="Herramientas usadas">
+    {notebook.tools.map((tool) => <li><Badge label={tool} /></li>)}
+  </ul>
+
+  {
+    notebook.url && (
+      <div class="mt-auto">
+        <Button href={notebook.url} variant="secondary">
+          Ver en GitHub<span class="sr-only">: {notebook.title}</span>
+        </Button>
+      </div>
+    )
+  }
+</Card>
